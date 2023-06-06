@@ -1,47 +1,72 @@
 #include<iostream>
-#include<ctime>
 #include<cstdlib>
+#include<ctime>
 using namespace std;
 
-void fillArray(int arr[], int size) {
-	for (int i = 0; i < size; i++) {
-		arr[i] = rand() % 40 - 20;
-	}
-}
-void firsnumb(int arr[], int size) {
-	int first = 0;
-	for (int i = 0; i < size; i++) {
-		if (arr[i] < 0) {
-			first = arr[i];
-			break;
-		}
-	}
-	cout << "First negative number: " << first << endl;
-}
-void lastnumb(int arr[], int size) {
-	int last = 0;
-	for (int i = size - 1; i >= 0; i--) {
-		if (arr[i] < 0) {
-			last = arr[i];
-			break;
-		}
-	}
-	cout << "Last negative number: " << last << endl;
+void enterArr(int arr[], int SIZE);
+void sortArr(int arr[], int SIZE);
+
+int main()
+{
+    srand(time(NULL));
+    int start;
+    int end;
+
+    const int SIZE = 20;
+    int arr[SIZE];
+    enterArr(arr, SIZE);
+    cout << "Arr = ";
+    for (int i = 0; i < SIZE; i++)
+    {
+        cout << arr[i] << " |";
+    }
+    sortArr(arr, SIZE);
+
+    system("pause>nul");
+    return 0;
 }
 
-int main() {
+void enterArr(int arr[], int SIZE)
+{
+    for (int i = 0; i < SIZE; i++)
+    {
+        arr[i] = rand() % 40 - 20;
+    }
+}
+void sortArr(int arr[], int SIZE)
+{
+    int start{};
+    for (int i = 0; i < SIZE; i++)
+    {
 
-	srand(time(NULL));
-	const int SIZE = 10;
-	int arr[SIZE];
-	fillArray(arr, SIZE);
-	cout << "Array: ";
-	for (int i = 0; i < SIZE; i++) {
-		cout << arr[i] << " ";
-	}
-	cout << endl;
-	firsnumb(arr, SIZE);
-	lastnumb(arr, SIZE);
-	system("pause>nul");
-	return 0;
+        if (arr[i] < 0)
+        {
+            start = i;
+            break;
+        }
+    }
+    int end{};
+    for (int i = SIZE - 1; i >= 0; i--)
+    {
+        if (arr[i] < 0)
+        {
+            end = i;
+            break;
+        }
+    }
+    for (int i = start; i < end - 1; i++)
+    {
+        for (int j = start; j < end - start; j++)
+        {
+            if (arr[j] > arr[j + 1])
+            {
+                swap(arr[j + 1], arr[j]);
+            }
+        }
+    }
+    cout << endl << endl << "sort = ";
+    for (int i = start; i <= end; i++)
+    {
+        cout << arr[i] << " |";
+    }
 }
