@@ -33,9 +33,6 @@ int main()
 	for (int i = 0; i < SIZE; i++) {
 		cout << arr[i] << " ";
 	}
-
-
-
 	system("pause>nul");
 	return 0;
 }
