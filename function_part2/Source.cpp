@@ -18,7 +18,7 @@ int main()
     cout << "Arr = ";
     for (int i = 0; i < SIZE; i++)
     {
-        cout << arr[i] << " |";
+        cout << arr[i] << " ";
     }
     sortArr(arr, SIZE);
 
@@ -67,6 +67,6 @@ void sortArr(int arr[], int SIZE)
     cout << endl << endl << "sort = ";
     for (int i = start; i <= end; i++)
     {
-        cout << arr[i] << " |";
+        cout << arr[i] << " ";
     }
 }
